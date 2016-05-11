@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Project Smoke Test Suite" parallel="classes" thread-count="2">
+  
+  <parameter name="baseFilePath"  value="E:\HBS_Workspace\HBS_DemoCode\MavenProjectTemplate_DemoCode\src\it\java\hbs\schoolwide\testdata\"/>
+  <parameter name="browserUnderTest" value="FF"/>
+	<test name="Project Smoke Tests">
+    		
+    <packages>
+		<package name="hbs.schoolwide.testcases.*"/>
+    </packages>
+    
+  </test>
+</suite>

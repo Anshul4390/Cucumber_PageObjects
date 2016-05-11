@@ -1,72 +1,115 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>hbs.it</groupId>
-	<artifactId>mavenprojecttemplate</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>MavenProjectTemplate</name>
-	<properties>
-		<java-version>1.8</java-version>
-	</properties>
-	<build>
- 
-        <plugins>
- 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
-                <configuration>
-                	<systemProperties>
-						<browser>${browser}</browser>
-					</systemProperties>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng_Cucumber.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                </configuration>
-            </plugin>
- 
-        </plugins>
- 
-    </build>
- 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>hbs.it</groupId>
+  <artifactId>mavenproject_demo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>MavenProject_Demo</name>
+  <properties>
+      <java-version>1.8</java-version>
+  </properties>
+  	<profiles>
+		<profile>
+			<id>integration-tests</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+            <name>myParam</name>
+            
+            <value>true</value>
+        </property>
+			</activation>
+			<build>
+				<plugins>
+		            <plugin>
+		                <groupId>org.apache.maven.plugins</groupId>
+		                <artifactId>maven-compiler-plugin</artifactId>
+		                <version>3.1</version>                
+		                <configuration>
+		                    <source>${java-version}</source>
+		                    <target>${java-version}</target>
+		                </configuration>
+		            </plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>1.8</version>
+						<executions>
+							<execution>
+								<id>add-source</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-test-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>src/it</source>
+									</sources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>add-resource</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-test-resource</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/it/resources</directory>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<!-- block unit tests execution -->
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.18</version>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</plugin>
+					<plugin>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>2.18</version>
+			        <configuration>
+			          <suiteXmlFiles>
+			            <suiteXmlFile>${project.basedir}/testng_smoke.xml</suiteXmlFile>
+			          </suiteXmlFiles>
+			        </configuration>
+						<executions>
+							<execution>
+								<!-- <phase>integration-test</phase> -->
+								<goals>
+									<goal>integration-test</goal>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<dependencies>
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>6.9.10</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>hbs.qe</groupId>
-			<artifactId>commonAutomation</artifactId>
-			<version>0.46</version>
-		</dependency>
-		<dependency>
-			<groupId>org.yaml</groupId>
-			<artifactId>snakeyaml</artifactId>
-			<version>1.17</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-server</artifactId>
-			<version>2.53.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>1.2.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>1.1.7</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
+	    <dependency>
+	      <groupId>org.testng</groupId>
+	      <artifactId>testng</artifactId>
+	      <version>6.9.10</version>
+	      <scope>test</scope>
+	    </dependency>
+	    <dependency>
+	      <groupId>hbs.qe</groupId>
+	      <artifactId>commonAutomation</artifactId>
+	      <version>0.46</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.seleniumhq.selenium</groupId>
+	      <artifactId>selenium-server</artifactId>
+	      <version>2.53.0</version>
+	    </dependency>
+	    <dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>3.11</version>
@@ -83,10 +126,16 @@
 		</dependency>
 	</dependencies>
 	<repositories>
-		<!--other repositories if any -->
-		<!-- <repository> <id>project.local</id> <name>project</name> <url>file:${project.basedir}/repo</url> 
-			</repository> -->
-		<!--<repository> <id>hbs_central</id> <name>HBS Central Repository</name> 
-			<url>http://sargas.hbs.edu:82/maven-repo/</url> </repository> -->
+	    <!--other repositories if any-->
+	    <!-- <repository>
+	        <id>project.local</id>
+	        <name>project</name>
+	        <url>file:${project.basedir}/repo</url>
+	    </repository> -->
+		<!--<repository>
+	        <id>hbs_central</id>
+	        <name>HBS Central Repository</name>
+	        <url>http://sargas.hbs.edu:82/maven-repo/</url>
+	    </repository>-->
 	</repositories>
 </project>

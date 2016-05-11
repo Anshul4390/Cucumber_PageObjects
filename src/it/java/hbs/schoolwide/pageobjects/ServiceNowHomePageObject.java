@@ -11,8 +11,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
-
 import hbs.itg.automation.commonpageobjects.BasePage;
 import hbs.itg.automation.lib.Utils;
 
@@ -57,7 +55,7 @@ public class ServiceNowHomePageObject extends BasePage {
 		super(driver);
 		this.driver = driver;
 	}
-
+    
 	public boolean verifyUserIsOnServiceNowHomePage() {
 		boolean isActive = false;
 		boolean isActive2 = false;
@@ -91,11 +89,17 @@ public class ServiceNowHomePageObject extends BasePage {
 		
 		switchToIFrame(iframe_filter);
 		WaitForAjaxElement(inp_searchFilter,30);
+		try{
+			Thread.sleep(2000);
+		}catch(InterruptedException ex){
+			System.out.println("Problems in putting up with static wait");
+		}
 		inp_searchFilter.sendKeys(searchTerm + Keys.RETURN);
 		System.out.println("User entered '" + term + "' in the filter search box and pressed enter");
 	}
 
-	public void verifyFilterSearch() {
+	public String verifyFilterSearch() {
+		String heading = null;
 		WaitForAjaxElement(list_openedPanel, 30);
 		WaitForAjaxElement(lnk_defectPanelCreateNew, 30);
 		
@@ -103,12 +107,9 @@ public class ServiceNowHomePageObject extends BasePage {
 		
 		switchToIFrame(iframe_mainContent);
 		WaitForAjaxElement(inp_mainContentHeading,30);
-		Assert.assertTrue(inp_mainContentHeading.getAttribute("value").trim().equals("Defect Overview"),
-				"Assertion Failed :: Defect Overview section does not appear after putting in 'Defect' as filter");
-
+		heading = inp_mainContentHeading.getAttribute("value").trim();
 		driver.switchTo().defaultContent();
-		
-		System.out.println("Assertion Passed :: Filtering with term '" + searchTerm + "' is working fine");
+		return heading;
 	}
 
 	public void clickCreateNewLinkForDefect() {

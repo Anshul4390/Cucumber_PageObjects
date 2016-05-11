@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+
 import hbs.itg.automation.commonpageobjects.BasePage;
 import hbs.itg.automation.lib.Encryptor;
 import hbs.itg.automation.lib.Utils;
@@ -44,7 +45,7 @@ public class HBSSecureLoginPageObject extends BasePage {
 		this.driver = driver;
 		this.encryption = new Encryptor();
 	}
-
+	
 	public boolean verifyUserIsOnHBSSecureLoginPage() {
 		boolean isActive = false;
 		try {
