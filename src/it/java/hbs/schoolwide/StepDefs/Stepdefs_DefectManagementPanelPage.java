@@ -19,7 +19,7 @@ import hbs.schoolwide.pageobjects.ServiceNowHomePageObject;
 import hbs.schoolwide.utils.YamlReader;
 
 public class Stepdefs_DefectManagementPanelPage {
-	private WebDriver driver = CucumberHooks.driver;
+	private WebDriver driver = CucumberHooks.getDriver();
 	HBSSecureLoginPageObject loginPage = null;
 	ServiceNowHomePageObject serviceNow = null;
 	DefectManagementHomePageObject defect = null;

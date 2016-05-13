@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Test_runner">
-                    <span>E:\HBS_Workspace\HBS_DemoCode\HBS_Pilot_DefectManagement\testng_Cucumber.xml</span>
+                    <span>C:\Users\anshulmathur\Desktop\Cucumber_PageObjects-master\Cucumber_PageObjects-master\testng_Cucumber.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -102,7 +102,7 @@
                     <div class="method-list-content passed suite-Test_runner">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Test_runner" title="hbs.schoolwide.tests.Story_C5938_Test" hash-for-method="run_cukes">run_cukes</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Test_runner" title="hbs.schoolwide.tests.Story_C5935_Test" hash-for-method="run_cukes">run_cukes</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -112,7 +112,7 @@
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Test_runner" title="hbs.schoolwide.tests.Story_C5935_Test" hash-for-method="run_cukes">run_cukes</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Test_runner" title="hbs.schoolwide.tests.Story_C5938_Test" hash-for-method="run_cukes">run_cukes</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Test_runner -->
@@ -181,14 +181,15 @@
         </div> <!-- panel Test_runner -->
         <div panel-name="test-xml-Test_runner" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">E:\HBS_Workspace\HBS_DemoCode\HBS_Pilot_DefectManagement\testng_Cucumber.xml</span>
+            <span class="header-content">C:\Users\anshulmathur\Desktop\Cucumber_PageObjects-master\Cucumber_PageObjects-master\testng_Cucumber.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Test runner&quot;&gt;
+&lt;suite thread-count=&quot;3&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Test runner&quot; parallel=&quot;instances&quot;&gt;
   &lt;test name=&quot;Package with subpackages&quot;&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;Chrome&quot;/&gt;
     &lt;packages&gt;
       &lt;package name=&quot;hbs.schoolwide.tests.*&quot;/&gt;
     &lt;/packages&gt;
@@ -246,16 +247,16 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'run_cukes')
-data.setCell(0, 2, 'hbs.schoolwide.tests.Story_C5936_Test')
-data.setCell(0, 3, 61332);
+data.setCell(0, 2, 'hbs.schoolwide.tests.Story_C5938_Test')
+data.setCell(0, 3, 47174);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'run_cukes')
-data.setCell(1, 2, 'hbs.schoolwide.tests.Story_C5938_Test')
-data.setCell(1, 3, 57357);
+data.setCell(1, 2, 'hbs.schoolwide.tests.Story_C5936_Test')
+data.setCell(1, 3, 45400);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'run_cukes')
 data.setCell(2, 2, 'hbs.schoolwide.tests.Story_C5935_Test')
-data.setCell(2, 3, 38752);
+data.setCell(2, 3, 39532);
 window.suiteTableData['Test_runner']= { tableData: data, tableDiv: 'times-div-Test_runner'}
 return data;
 }
@@ -274,12 +275,12 @@ return data;
             <div class="reporter-method-div">
               <span class="reporter-method-name">run_cukes</span>
               <div class="reporter-method-output-div">
-                <span class="reporter-method-output"><div "featureFile">Feature File: src&#x2F;it&#x2F;resources&#x2F;features&#x2F;Story_C5938.feature</div></span>
-                <span class="reporter-method-output"><div "feature">Feature: Error validation for blank submission of Defect Form</div></span>
-                <span class="reporter-method-output"><div "scenario">Scenario: Verify all the required fields of Defect form</div></span>
-                <span class="reporter-method-output"><div "result">Given  The defect creation form is open in the default state (passed : 43s)</div></span>
-                <span class="reporter-method-output"><div "result">When  I click on the Submit Button (passed : 1s)</div></span>
-                <span class="reporter-method-output"><div "result">Then  I observe that an error message pop-up window appears with the following text: The following mandatory fields are not filled in: Short description, Description, Environment, Application&#x2F;Service (passed : 1s)</div></span>
+                <span class="reporter-method-output"><div "featureFile">Feature File: src&#x2F;it&#x2F;resources&#x2F;features&#x2F;Story_C5935.feature</div></span>
+                <span class="reporter-method-output"><div "feature">Feature: User launches Service now application and is able to log in successfully</div></span>
+                <span class="reporter-method-output"><div "scenario">Scenario: Verify user can access the Service Now application</div></span>
+                <span class="reporter-method-output"><div "result">Given  I am on hbs secure login page (passed : 12s)</div></span>
+                <span class="reporter-method-output"><div "result">When  I login with valid credentials (passed : 25s)</div></span>
+                <span class="reporter-method-output"><div "result">Then  I land on Service now home page (passed : 0s)</div></span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
             <div class="reporter-method-div">
@@ -288,22 +289,22 @@ return data;
                 <span class="reporter-method-output"><div "featureFile">Feature File: src&#x2F;it&#x2F;resources&#x2F;features&#x2F;Story_C5936.feature</div></span>
                 <span class="reporter-method-output"><div "feature">Feature: User access Defect management area in service now application</div></span>
                 <span class="reporter-method-output"><div "scenario">Scenario: Verify user can access the Defect form</div></span>
-                <span class="reporter-method-output"><div "result">Given  I am on service now home page (passed : 14s)</div></span>
-                <span class="reporter-method-output"><div "result">When  I type the term Defect in filter text box (passed : 26s)</div></span>
-                <span class="reporter-method-output"><div "result">Then  I see Defect module and other links inside the left pane window (passed : 4s)</div></span>
-                <span class="reporter-method-output"><div "result">When  I click on Create New link in the left navigation menu (passed : 0s)</div></span>
-                <span class="reporter-method-output"><div "result">Then  I see a new Defect form opens in the right pane enabling the user to enter a defect (passed : 4s)</div></span>
+                <span class="reporter-method-output"><div "result">Given  I am on service now home page (passed : 25s)</div></span>
+                <span class="reporter-method-output"><div "result">When  I type the term Defect in filter text box (passed : 13s)</div></span>
+                <span class="reporter-method-output"><div "result">Then  I see Defect module and other links inside the left pane window (passed : 3s)</div></span>
+                <span class="reporter-method-output"><div "result">When  I click on Create New link in the left navigation menu (passed : 1s)</div></span>
+                <span class="reporter-method-output"><div "result">Then  I see a new Defect form opens in the right pane enabling the user to enter a defect (passed : 0s)</div></span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
             <div class="reporter-method-div">
               <span class="reporter-method-name">run_cukes</span>
               <div class="reporter-method-output-div">
-                <span class="reporter-method-output"><div "featureFile">Feature File: src&#x2F;it&#x2F;resources&#x2F;features&#x2F;Story_C5935.feature</div></span>
-                <span class="reporter-method-output"><div "feature">Feature: User launches Service now application and is able to log in successfully</div></span>
-                <span class="reporter-method-output"><div "scenario">Scenario: Verify user can access the Service Now application</div></span>
-                <span class="reporter-method-output"><div "result">Given  I am on hbs secure login page (passed : 18s)</div></span>
-                <span class="reporter-method-output"><div "result">When  I login with valid credentials (passed : 5s)</div></span>
-                <span class="reporter-method-output"><div "result">Then  I land on Service now home page (passed : 0s)</div></span>
+                <span class="reporter-method-output"><div "featureFile">Feature File: src&#x2F;it&#x2F;resources&#x2F;features&#x2F;Story_C5938.feature</div></span>
+                <span class="reporter-method-output"><div "feature">Feature: Error validation for blank submission of Defect Form</div></span>
+                <span class="reporter-method-output"><div "scenario">Scenario: Verify all the required fields of Defect form</div></span>
+                <span class="reporter-method-output"><div "result">Given  The defect creation form is open in the default state (passed : 43s)</div></span>
+                <span class="reporter-method-output"><div "result">When  I click on the Submit Button (passed : 1s)</div></span>
+                <span class="reporter-method-output"><div "result">Then  I observe that an error message pop-up window appears with the following text: The following mandatory fields are not filled in: Short description, Description, Environment, Application&#x2F;Service (passed : 1s)</div></span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -321,24 +322,45 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
+              <div class="chronological-class-name">hbs.schoolwide.tests.Story_C5936_Test</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">takeParameter(org.testng.TestRunner@402f32ff)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">hbs.schoolwide.tests.Story_C5938_Test</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">takeParameter(org.testng.TestRunner@402f32ff)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
               <div class="chronological-class-name">hbs.schoolwide.tests.Story_C5935_Test</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">takeParameter(org.testng.TestRunner@402f32ff)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">hbs.schoolwide.tests.Story_C5938_Test</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">run_cukes</span>
-                <span class="method-start">0 ms</span>
+                <span class="method-start">20 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">hbs.schoolwide.tests.Story_C5936_Test</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">run_cukes</span>
-                <span class="method-start">38758 ms</span>
+                <span class="method-start">20 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
-              <div class="chronological-class-name">hbs.schoolwide.tests.Story_C5938_Test</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">hbs.schoolwide.tests.Story_C5935_Test</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">run_cukes</span>
-                <span class="method-start">100092 ms</span>
+                <span class="method-start">20 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

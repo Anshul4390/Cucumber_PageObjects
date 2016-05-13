@@ -3,8 +3,9 @@
 
 <!-- MavenProjectTemplate Master Test Suite -->
 
-<suite name="Test runner" parallel="classes" thread-count="2">
+<suite name="Test runner" parallel="instances" thread-count="3">
     <test name="Package with subpackages">
+    <parameter name="browser" value="Chrome"></parameter>
         <packages>
             <package name="hbs.schoolwide.tests.*"/>
         </packages>

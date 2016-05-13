@@ -6,15 +6,10 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
-
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import hbs.itg.automation.commonpageobjects.BasePage;
 import hbs.itg.automation.lib.Browser;
 
 public class CucumberHooks {
@@ -29,41 +24,38 @@ public class CucumberHooks {
 	public static Map<String,String> SceanrioResults = new HashMap<String,String>();
 	public static int count = 0;
 	
-	public static WebDriver driver;
-	public String browserValue;
+	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+	public static String browserValue;
+
 	  
-	
+	public static WebDriver getDriver() {
+	Browser br=null;
+	try {
+		br = new Browser(driver.get());
+	} catch (InterruptedException e) {
+		
+		e.printStackTrace();
+	}
+        if (driver.get() == null) {
+            setWebDriver(br.start(getBrowserValue()));
+        }
+       
+        return driver.get();
+    }
+
+    public static void setWebDriver(WebDriver driver) {
+        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+        CucumberHooks.driver.set(driver);
+    }
+    
 	@Before
 	public void tearUp(Scenario scenario){
-		Browser browser = null;
-		
-		if(System.getProperty("browser")==null){
-			browserValue = "FF";
-		}else{
-			browserValue = System.getProperty("browser");
-		}
-		try {
-			browser = new Browser(driver);
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
-		//driver = browser.start(context.getCurrentXmlTest().getParameter("browserUnderTest"));
-		driver = browser.start(browserValue);
-		driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
 		printScenarioName(scenario);
 	}
 	
 	@After
 	public void tearDown(Scenario scenario){
-		
-		 if (scenario.isFailed()){
-			  BasePage util = PageFactory.initElements(driver, BasePage.class);
-			  //System.out.println(testResult.getName() + " TestName: " + testResult.getTestName());
-			  util.captureScreenShot("Failure_" + scenario.getName());	
-		}
-		driver.quit();
-		
+		getDriver().quit();
 	}
 	
 
@@ -119,6 +111,14 @@ public class CucumberHooks {
 			}
 		return SceanrioResults;
 		
+	}
+	
+	public static void setBrowser(String browser){
+		browserValue = browser;
+	}
+	
+	public static String getBrowserValue(){
+		return browserValue;
 	}
 	
 }

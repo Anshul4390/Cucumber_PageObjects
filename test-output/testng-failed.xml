@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Test runner]">
+<suite thread-count="3" guice-stage="DEVELOPMENT" name="Failed suite [Test runner]" parallel="instances">
+  <parameter name="browser" value="Chrome"/>
   <test name="Package with subpackages">
+    <parameter name="browser" value="Chrome"/>
     <packages>
       <package name="hbs.schoolwide.tests.*"/>
     </packages>

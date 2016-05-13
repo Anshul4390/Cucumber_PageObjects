@@ -47,8 +47,8 @@ public class DefectManagementHomePageObject extends BasePage{
 		switchToIFrame(iframe_mainWindow);
 		Assert.assertTrue(txt_mainHeading.getText().trim().equals("Defect"),
 				"Assertion Failed :: Defect management panel's heading is incorrect");
-		Assert.assertTrue(lnk_activeTab.getText().trim().equals("Submitted"),
-				"Assertion Failed :: The default active tab is not 'Submitted'");
+//		Assert.assertTrue(lnk_activeTab.getText().trim().equals("Submitted"),
+//				"Assertion Failed :: The default active tab is not 'Submitted'");
 		System.out.println("User is now successfully landed on Defect panel - Create New page");
 	}
 	

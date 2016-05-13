@@ -18,7 +18,7 @@ import hbs.schoolwide.utils.YamlReader;
 
 public class Stepdefs_HBSSecureLoginPage {
 	
-	private WebDriver driver = CucumberHooks.driver;
+	private WebDriver driver = CucumberHooks.getDriver();
 	HBSSecureLoginPageObject loginPage = null;
 	
 	@Given("^I am on hbs secure login page$")

@@ -19,7 +19,7 @@ import hbs.schoolwide.pageobjects.ServiceNowHomePageObject;
 import hbs.schoolwide.utils.YamlReader;
 
 public class Stepdefs_ServiceNowHomePage {
-	private WebDriver driver = CucumberHooks.driver;
+	private WebDriver driver = CucumberHooks.getDriver();
 	ServiceNowHomePageObject serviceNow = null;
 	HBSSecureLoginPageObject loginPage = null;
 	
