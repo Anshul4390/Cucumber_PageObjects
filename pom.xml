@@ -2,11 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>hbs.it</groupId>
-	<artifactId>mavenprojecttemplate</artifactId>
+	<artifactId>HBS_FinalCodebase_Pilot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>MavenProjectTemplate</name>
+	<name>HBS_FinalCodebase_Pilot</name>
 	<properties>
 		<java-version>1.8</java-version>
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 	</properties>
 	<build>
  
@@ -17,13 +18,76 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.18.1</version>
                 <configuration>
-                	<systemProperties>
-						<browser>${browser}</browser>
-					</systemProperties>
                     <suiteXmlFiles>
                         <suiteXmlFile>testng_Cucumber.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            
+             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+                    <execution>
+                        <id>build-features-from-testrail</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <includeProjectDependencies>true</includeProjectDependencies>
+                            <executableDependency>
+                                <groupId>edu.hbs.qa</groupId>
+                                <artifactId>testrail_cucumber_testrunner</artifactId>
+                            </executableDependency>
+                            <mainClass>edu.hbs.qa.testrailrunner.BuildFeature</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-results-to-testrail</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <includeProjectDependencies>true</includeProjectDependencies>
+                            <executableDependency>
+                                <groupId>edu.hbs.qa</groupId>
+                                <artifactId>testrail_cucumber_testrunner</artifactId>
+                            </executableDependency>
+                            <mainClass>edu.hbs.qa.testrailrunner.PostResults</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>0.0.5</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>cucumber-jvm-example</projectName>
+                            <outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/cucumber-report.json</cucumberOutput>
+                            <enableFlashCharts>false</enableFlashCharts>
+                            <skippedFails>true</skippedFails>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
  
         </plugins>
@@ -67,6 +131,26 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+            <groupId>edu.hbs.qa</groupId>
+            <artifactId>testrail_cucumber_testrunner</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>3.11</version>
